@@ -13,7 +13,7 @@ public class CustomerserviceActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simcardinfo);
+        setContentView(R.layout.activity_customerservice);
         mContext=this;
         initUi();
     }

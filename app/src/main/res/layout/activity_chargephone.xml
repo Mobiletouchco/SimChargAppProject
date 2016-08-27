@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="Bangladesh"
+        android:text="Saudi Arabia"
         android:textColor="@color/colorBack"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -65,8 +65,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:text="@string/voucher"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
@@ -79,19 +80,29 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
             android:background="@color/colorWhite">
+            <EditText
+                android:id="@+id/edit_voucher"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:padding="3dp"
+                android:background="@android:color/transparent"
+                android:singleLine="true"/>
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
                 android:text="@string/nation_id"
-                android:layout_marginTop="10dp"
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp"
                 android:textStyle="normal" />
@@ -100,9 +111,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/option"
-
-                android:layout_marginTop="10dp"
                 android:textColor="@color/colorWhite"
+                android:layout_marginLeft="5dp"
                 android:textSize="12sp"
                 android:textStyle="normal" />
         </LinearLayout>
@@ -115,6 +125,14 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="5dp"
             android:background="@color/colorWhite">
+            <EditText
+                android:id="@+id/edit_nation_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:padding="3dp"
+                android:background="@android:color/transparent"
+                android:singleLine="true"/>
         </LinearLayout>
 
 

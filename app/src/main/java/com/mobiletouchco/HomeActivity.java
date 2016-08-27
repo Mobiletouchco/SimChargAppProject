@@ -2,17 +2,19 @@ package com.mobiletouchco;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.mobiletouchco.utils.Connectivity;
+
 /**
  * Created by Prosanto on 8/26/16.
  */
-public class HomeActivity extends AppCompatActivity
-{
+public class HomeActivity extends AppCompatActivity {
     private Context mContext;
     private LinearLayout lay_chargebanlance;
     private LinearLayout lay_chackbalance;
@@ -23,19 +25,19 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        mContext=this;
+        mContext = this;
         initUi();
     }
 
     private void initUi() {
-        lay_chargebanlance=(LinearLayout)this.findViewById(R.id.lay_chargebanlance);
-        lay_chackbalance=(LinearLayout)this.findViewById(R.id.lay_chackbalance);
-        lay_customer_service=(LinearLayout)this.findViewById(R.id.lay_customer_service);
-        cardInfo=(LinearLayout)this.findViewById(R.id.cardInfo);
+        lay_chargebanlance = (LinearLayout) this.findViewById(R.id.lay_chargebanlance);
+        lay_chackbalance = (LinearLayout) this.findViewById(R.id.lay_chackbalance);
+        lay_customer_service = (LinearLayout) this.findViewById(R.id.lay_customer_service);
+        cardInfo = (LinearLayout) this.findViewById(R.id.cardInfo);
         lay_chargebanlance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(mContext,ChargePhoneActivity.class);
+                Intent mIntent = new Intent(mContext, ChargePhoneActivity.class);
                 startActivity(mIntent);
             }
         });
@@ -43,7 +45,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                String numberToDial = "tel:"+"*158#";
+                String numberToDial = "tel:" + "*158" + "%23";
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse(numberToDial));
                 startActivity(intent);
@@ -52,14 +54,14 @@ public class HomeActivity extends AppCompatActivity
         lay_customer_service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(mContext,CustomerserviceActivity.class);
+                Intent mIntent = new Intent(mContext, CustomerserviceActivity.class);
                 startActivity(mIntent);
             }
         });
         cardInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(mContext,SimcardinfoActivity.class);
+                Intent mIntent = new Intent(mContext, SimcardinfoActivity.class);
                 startActivity(mIntent);
             }
         });
