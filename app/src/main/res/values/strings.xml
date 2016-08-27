@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Mobiletouchco</string>
+    <string name="simcode">SIM CHARGING CODES</string>
+    <string name="selete_country">Select Country</string>
+    <string name="selete_Network">Select Network</string>
+    <string name="go">Go</string>
+    <string name="auto">Auto Detect Network</string>
+    <!--<string name="optional">Optional for some operators</string>-->
+    <string name="voucher">Voucher</string>
+    <string name="nation_id">National ID</string>
+    <string name="option">*Optional for some operators</string>
+
+
 </resources>
