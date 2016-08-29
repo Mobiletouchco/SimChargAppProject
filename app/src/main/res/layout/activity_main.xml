@@ -30,7 +30,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
-        android:background="#365f5c"
+        android:background="@drawable/auto_background"
         android:gravity="center">
 
         <TextView
@@ -110,7 +110,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
-        android:background="#cbd13c"
+        android:background="@drawable/go_background"
         android:gravity="center"
         android:onClick="Go">
 
