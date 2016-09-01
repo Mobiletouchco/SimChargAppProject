@@ -105,6 +105,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/li_go"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
@@ -112,7 +113,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/go_background"
         android:gravity="center"
-        android:onClick="Go">
+        >
 
         <TextView
             android:layout_width="wrap_content"

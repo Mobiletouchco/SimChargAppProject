@@ -42,4 +42,9 @@ public class ChargePhoneActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+    public void Back(View v )
+    {
+        ChargePhoneActivity.this.finish();
+        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+    }
 }

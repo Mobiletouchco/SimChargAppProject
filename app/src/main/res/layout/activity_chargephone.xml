@@ -17,6 +17,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
+            android:onClick="Back"
             android:background="@drawable/app_logo" />
 
         <TextView
@@ -29,11 +30,17 @@
             android:textStyle="normal" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/top_shadow_background">
+
+    </LinearLayout>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/network_icon" />
 
     <TextView
@@ -138,14 +145,16 @@
 
 
         <LinearLayout
+            android:id="@+id/li_go"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="15dp"
-            android:background="#cbd13c"
-            android:onClick="Go"
-            android:gravity="center">
+            android:background="@drawable/go_background"
+            android:gravity="center"
+            >
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -153,6 +162,7 @@
                 android:textColor="@color/colorBack"
                 android:textSize="18sp"
                 android:textStyle="normal" />
+
 
         </LinearLayout>
 

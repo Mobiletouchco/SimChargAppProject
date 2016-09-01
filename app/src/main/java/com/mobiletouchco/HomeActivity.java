@@ -1,5 +1,6 @@
 package com.mobiletouchco;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkInfo;
@@ -39,6 +40,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent mIntent = new Intent(mContext, ChargePhoneActivity.class);
                 startActivity(mIntent);
+                ((Activity) mContext).overridePendingTransition(R.anim.pull_in_right,
+                        R.anim.push_out_left);
             }
         });
         lay_chackbalance.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +59,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent mIntent = new Intent(mContext, CustomerserviceActivity.class);
                 startActivity(mIntent);
+                ((Activity) mContext).overridePendingTransition(R.anim.pull_in_right,
+                        R.anim.push_out_left);
             }
         });
         cardInfo.setOnClickListener(new View.OnClickListener() {
@@ -63,8 +68,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent mIntent = new Intent(mContext, SimcardinfoActivity.class);
                 startActivity(mIntent);
+                ((Activity) mContext).overridePendingTransition(R.anim.pull_in_right,
+                        R.anim.push_out_left);
             }
         });
+
+    }
+    public void Back(View v) {
+        HomeActivity.this.finish();
+        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
 
     }
 

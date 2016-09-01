@@ -17,6 +17,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
+            android:onClick="Back"
             android:background="@drawable/app_logo" />
 
         <TextView
@@ -29,6 +30,12 @@
             android:textStyle="normal" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/top_shadow_background">
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,8 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -53,63 +60,66 @@
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="SIM State"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/sim_state"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="OK"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="SIM Serial#"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/sim_serial"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="23245678965432"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
 
                 <TableRow
@@ -118,63 +128,66 @@
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="SIM IMSI"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/sim_imsi"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="1321234345"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Country"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/sim_country"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="Saudi Arabia"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
 
                 <TableRow
@@ -183,31 +196,32 @@
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Operator Name"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/sim_operator"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="STC"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
 
 
@@ -217,127 +231,134 @@
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Operator Code"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/sim_operatorcode"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="23000"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Network Type"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/sim_networdktype"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="HSPA"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Device Brand"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/device_brand"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="Google"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Manufacturer"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/device_Manufacturer"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="Huawei"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
 
                 <TableRow
@@ -346,63 +367,66 @@
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Model"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/device_model"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="Nexus 6s"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
+
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Device IMEI"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight=".1"
                         android:text=":"
-                        android:textStyle="bold"
-                        android:textSize="24dp"
                         android:textColor="@color/colorWhite"
-                        android:layout_height="wrap_content" />
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/device_imei"
                         android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_weight="1.3"
                         android:text="123456786543"
                         android:textColor="@color/colorWhite"
-                        android:textStyle="normal"
                         android:textSize="18dp"
-                        android:layout_height="wrap_content" />
+                        android:textStyle="normal" />
                 </TableRow>
             </LinearLayout>
         </ScrollView>

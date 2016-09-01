@@ -16,6 +16,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:onClick="Back"
             android:layout_marginLeft="10dp"
             android:background="@drawable/app_logo" />
 
@@ -28,12 +29,18 @@
             android:textSize="18sp"
             android:textStyle="normal" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/top_shadow_background">
+
+    </LinearLayout>
 
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/network_icon" />
 
     <TextView
@@ -58,8 +65,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="4dp"
         android:layout_marginTop="80dp"
-        android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -71,25 +78,35 @@
                 android:id="@+id/lay_chargebanlance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:background="@drawable/shadow_background"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:background="@color/colorBackground">
+                android:padding="3dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/charge_phone" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Charge Phone"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/charge_phone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Charge Phone"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -97,25 +114,35 @@
                 android:id="@+id/lay_chackbalance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:orientation="vertical"
-                android:gravity="center"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="4dp"
                 android:layout_weight="1"
-                android:background="@color/colorBackground">
+                android:background="@drawable/shadow_background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="3dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/check_balance" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Check Balance"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_balance" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check Balance"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
@@ -123,50 +150,63 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="4dp"
             android:layout_weight="1">
+
             <LinearLayout
                 android:id="@+id/lay_customer_service"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="2dp"
                 android:layout_weight="1"
-                android:orientation="vertical"
+                android:background="@drawable/shadow_background"
                 android:gravity="center"
-                android:background="@color/colorBackground">
+                android:orientation="vertical"
+                android:padding="3dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/customer_service" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Customer Service"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/customer_service" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Customer Service"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/cardInfo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/shadow_background"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:background="@drawable/shadow_0289"
-                android:layout_weight="1">
+                android:padding="3dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
+                    android:layout_height="match_parent"
                     android:background="@color/colorBackground"
-                    android:layout_height="match_parent">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
