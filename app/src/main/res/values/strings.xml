@@ -9,6 +9,7 @@
     <string name="voucher">Voucher</string>
     <string name="nation_id">National ID</string>
     <string name="option">*Optional for some operators</string>
+    <string name="internetconnection_erro">You are not connected to internet</string>
 
 
 </resources>
