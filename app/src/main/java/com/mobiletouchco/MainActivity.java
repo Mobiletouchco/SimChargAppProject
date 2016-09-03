@@ -1,11 +1,15 @@
 package com.mobiletouchco;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.NetworkInfo;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     private Spinner operator_spinner;
     private ArrayList<Operator> allOperators = new ArrayList<>();
     private OperatorAdapter mOperatorAdapter;
+    private LinearLayout li_auto;
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initUi() {
         text_networkd = (TextView) this.findViewById(R.id.text_networkd);
-        NetworkInfo mNetworkInfo = Connectivity.getNetworkInfo(mContext);
-        text_networkd.setText(mNetworkInfo.getTypeName());
         LinearLayout li_go = (LinearLayout) this.findViewById(R.id.li_go);
         li_go.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,10 +104,47 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        li_auto =(LinearLayout)this.findViewById(R.id.li_auto);
+        li_auto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{android.Manifest.permission.READ_PHONE_STATE},
+                            REQUEST_CODE_ASK_PERMISSIONS);
+                }
+                else {
+                    TelephonyManager manager = (TelephonyManager)mContext.getSystemService(Context.TELEPHONY_SERVICE);
+                    String carrierName = manager.getNetworkOperatorName();
+                    Log.w("carrierName","are"+carrierName);
+
+//                    Intent mIntent = new Intent(mContext, HomeActivity.class);
+//                    startActivity(mIntent);
+//                    ((Activity) mContext).overridePendingTransition(R.anim.pull_in_right,
+//                            R.anim.push_out_left);
+                }
+            }
+        });
 
         doWebRequestForCountryInfo();
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.READ_PHONE_STATE},
+                    REQUEST_CODE_ASK_PERMISSIONS);
+        }
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
     public void doWebRequestForCountryInfo() {
 
         String url = Config.BASEULR + "countryoperatorinfo";

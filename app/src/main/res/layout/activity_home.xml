@@ -16,9 +16,9 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:onClick="Back"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/app_logo" />
+            android:background="@drawable/app_logo"
+            android:onClick="Back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,6 +29,7 @@
             android:textSize="18sp"
             android:textStyle="normal" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
@@ -77,7 +78,6 @@
             android:layout_weight="1">
 
             <LinearLayout
-                android:id="@+id/lay_chargebanlance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="4dp"
@@ -89,9 +89,10 @@
                 android:padding="3dp">
 
                 <LinearLayout
+                    android:id="@+id/lay_chargebanlance"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorBackground"
+                    android:background="@drawable/sequare_btn"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -113,7 +114,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lay_chackbalance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -125,9 +125,11 @@
                 android:padding="3dp">
 
                 <LinearLayout
+                    android:id="@+id/lay_chackbalance"
+
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorBackground"
+                    android:background="@drawable/sequare_btn"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -156,7 +158,6 @@
             android:layout_weight="1">
 
             <LinearLayout
-                android:id="@+id/lay_customer_service"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="4dp"
@@ -168,9 +169,10 @@
                 android:padding="3dp">
 
                 <LinearLayout
+                    android:id="@+id/lay_customer_service"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorBackground"
+                    android:background="@drawable/sequare_btn"
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -191,7 +193,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/cardInfo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
@@ -203,9 +204,10 @@
                 android:padding="3dp">
 
                 <LinearLayout
+                    android:id="@+id/cardInfo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorBackground"
+                    android:background="@drawable/sequare_btn"
                     android:gravity="center"
                     android:orientation="vertical">
 
