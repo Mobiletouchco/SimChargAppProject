@@ -32,6 +32,13 @@ public class CountryListparser {
 
         if (success == 1) {
             final JSONArray JsonArray = json_ob.getJSONArray("results");
+            if (JsonArray.length() > 0) {
+                mCountryList = new CountryList();
+                mCountryList.setCountry_name("Select country");
+                AllCountryList.setCountryList(mCountryList);
+
+            }
+
             for (int i = 0; i < JsonArray.length(); i++) {
                 JSONObject object = JsonArray.getJSONObject(i);
                 mCountryList = new CountryList();
@@ -40,10 +47,14 @@ public class CountryListparser {
                 mCountryList.setCountry_name(object.getString("country_name"));
                 mCountryList.setNetwork_code(object.getString("network_code"));
 
-                JSONArray mJsonArray =object.getJSONArray("opertors");
-                ArrayList<Operator>allOperators = new ArrayList<>();
-                for(int index =0;index<mJsonArray.length();index++)
-                {
+                JSONArray mJsonArray = object.getJSONArray("opertors");
+
+                ArrayList<Operator> allOperators = new ArrayList<>();
+                mOperator = new Operator();
+                mOperator.setOperator_name("Select operator");
+                allOperators.add(mOperator);
+
+                for (int index = 0; index < mJsonArray.length(); index++) {
                     JSONObject objectOperator = mJsonArray.getJSONObject(index);
                     mOperator = new Operator();
                     mOperator.setCharge_code(objectOperator.getString("charge_code"));
