@@ -10,9 +10,6 @@ import android.net.NetworkInfo;
 public class Config {
     public static final String BASEULR ="http://www.mobiletouchco.com/webservice/";
     public static final String securitycode = "api#100#mobiletouch*786!#101";
-    public static  String CountryName = "";
-    public static  String OperatorName = "";
-
     public static boolean isOnline(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();

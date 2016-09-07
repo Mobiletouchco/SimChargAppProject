@@ -1,5 +1,7 @@
 package com.mobiletouchco.model;
 
+import java.util.Comparator;
+
 /**
  * Created by Prosanto on 9/2/16.
  */
@@ -58,4 +60,16 @@ public class Operator {
     public void setOperator_logo(String operator_logo) {
         this.operator_logo = operator_logo;
     }
+    public static Comparator<Operator> StuNameComparator = new Comparator<Operator>() {
+
+        public int compare(Operator s1, Operator s2) {
+            String StudentName1 = s1.getOperator_name().toUpperCase();
+            String StudentName2 = s2.getOperator_name().toUpperCase();
+
+            //ascending order
+            return StudentName1.compareTo(StudentName2);
+
+            //descending order
+            //return StudentName2.compareTo(StudentName1);
+        }};
 }

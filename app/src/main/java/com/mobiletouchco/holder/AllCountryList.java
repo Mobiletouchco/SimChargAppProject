@@ -1,7 +1,9 @@
 package com.mobiletouchco.holder;
 
 import com.mobiletouchco.model.CountryList;
+import com.mobiletouchco.model.Sortbycountry;
 
+import java.util.Collections;
 import java.util.Vector;
 
 /**
@@ -27,6 +29,10 @@ public class AllCountryList {
 
     public static void removeAllCountryList() {
         AllCountryList.allCountryList.removeAllElements();
+    }
+    public static Vector<CountryList> getAllCountryListort() {
+        Collections.sort( AllCountryList.allCountryList, new Sortbycountry());
+        return  AllCountryList.allCountryList;
     }
 
 }

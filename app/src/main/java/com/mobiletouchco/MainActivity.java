@@ -79,22 +79,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (allOperators.size() > 1) {
-                    if(operator_spinner.getSelectedItemPosition()>0)
-                    {
+                    if (operator_spinner.getSelectedItemPosition() > 0) {
                         Operator mOperator = allOperators.get(operator_spinner.getSelectedItemPosition());
-                        doWebRequestForOpertordetails(mOperator.getOperator_id());
-                        Config.OperatorName = mOperator.getOperator_name();
-                        CountryList mCountryList = AllCountryList.getAllCountryList().elementAt(spinner_country.getSelectedItemPosition());
-                        Config.CountryName = mCountryList.getCountry_name();
-                    }
-                    else {
+                        if (!NetInfo.isOnline(mContext)) {
+
+
+                        } else {
+                            doWebRequestForOpertordetails(mOperator.getOperator_id());
+
+                        }
+
+                    } else {
                         Toast.makeText(getApplicationContext(), "Please select operator", Toast.LENGTH_SHORT).show();
 
                     }
 
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Don't find any operator !!!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "No operator found!!!", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -111,6 +112,13 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 CountryList mCountryList = AllCountryList.getAllCountryList().elementAt(i);
                 allOperators = mCountryList.getAllOperator();
+                if (allOperators.size() > 0) {
+                    Collections.sort(allOperators, Operator.StuNameComparator);
+                    Operator mOperator = new Operator();
+                    mOperator.setOperator_name("Select operator");
+                    allOperators.add(0, mOperator);
+
+                }
                 mOperatorAdapter = new OperatorAdapter(mContext, R.layout.spinner_item, allOperators);
                 operator_spinner.setAdapter(mOperatorAdapter);
                 mOperatorAdapter.notifyDataSetChanged();
@@ -142,15 +150,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        li_contactus=(LinearLayout)this.findViewById(R.id.li_contactus);
+        li_contactus = (LinearLayout) this.findViewById(R.id.li_contactus);
         li_contactus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("message/rfc822");
-                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"Mobiletouchco@gmail.com"});
+                i.putExtra(Intent.EXTRA_EMAIL, new String[]{"Mobiletouchco@gmail.com"});
                 i.putExtra(Intent.EXTRA_SUBJECT, "Support");
-                i.putExtra(Intent.EXTRA_TEXT   , "");
+                i.putExtra(Intent.EXTRA_TEXT, "");
                 try {
                     startActivity(Intent.createChooser(i, "Send mail..."));
                 } catch (android.content.ActivityNotFoundException ex) {
@@ -159,11 +167,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        doWebRequestForCountryInfo();
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE)
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{android.Manifest.permission.READ_PHONE_STATE},
                     REQUEST_CODE_ASK_PERMISSIONS);
+        }
+
+        // check the internet connection available or not
+        if (!NetInfo.isOnline(mContext)) {
+            String responseData = PersistentUser.getAllOpertordetails(mContext);
+            if (responseData.equalsIgnoreCase("")) {
+                Toast.makeText(MainActivity.this, "Need to first time Internet connection.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            try {
+
+                CountryListparser.connect(mContext, responseData);
+                AllCountryList.getAllCountryListort();
+                if (AllCountryList.getAllCountryListort().size() > 0) {
+                    CountryList mCountryList = new CountryList();
+                    mCountryList.setCountry_name("Select country");
+                    AllCountryList.getAllCountryList().add(0, mCountryList);
+                }
+                mCountryAdapter.notifyDataSetChanged();
+                if (AllCountryList.getAllCountryList().size() > 0)
+                    spinner_country.setSelection(0);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            doWebRequestForCountryInfo();
         }
 
     }
@@ -184,10 +219,7 @@ public class MainActivity extends AppCompatActivity {
     public void doWebRequestForCountryInfo() {
 
         String url = Config.BASEULR + "countryoperatorinfo";
-        if (!NetInfo.isOnline(mContext)) {
-            Toast.makeText(getApplicationContext(), "" + getResources().getString(R.string.internetconnection_erro), Toast.LENGTH_SHORT).show();
-            return;
-        }
+
         mBusyDialog = new BusyDialog(mContext, false, "Loading...");
         mBusyDialog.show();
 
@@ -199,7 +231,14 @@ public class MainActivity extends AppCompatActivity {
                 try {
 
                     CountryListparser.connect(mContext, response);
+                    PersistentUser.setAllOpertordetails(mContext, response);
+                    AllCountryList.getAllCountryListort();
+                    if (AllCountryList.getAllCountryListort().size() > 0) {
+                        CountryList mCountryList = new CountryList();
+                        mCountryList.setCountry_name("Select country");
+                        AllCountryList.getAllCountryList().add(0, mCountryList);
 
+                    }
                     mCountryAdapter.notifyDataSetChanged();
                     if (AllCountryList.getAllCountryList().size() > 0)
                         spinner_country.setSelection(0);
@@ -319,15 +358,12 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(mContext, "Your current network is not detected.Please manually select  network", Toast.LENGTH_LONG).show();
                         return;
                     } else {
-
+                        PersistentUser.setOpertordetails(mContext, response);
+                        Intent mIntent = new Intent(mContext, HomeActivity.class);
+                        startActivity(mIntent);
+                        ((Activity) mContext).overridePendingTransition(R.anim.pull_in_right,
+                                R.anim.push_out_left);
                     }
-
-                    PersistentUser.setOpertordetails(mContext, response);
-                    Intent mIntent = new Intent(mContext, HomeActivity.class);
-                    startActivity(mIntent);
-                    ((Activity) mContext).overridePendingTransition(R.anim.pull_in_right,
-                            R.anim.push_out_left);
-
 
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -52,17 +52,18 @@
                 android:layout_height="match_parent"
                 android:layout_above="@+id/operator_name"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/network_icon" />
 
             <TextView
                 android:id="@+id/operator_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/country_name"
                 android:layout_centerHorizontal="true"
 
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="STC"
                 android:textColor="@color/colorBack"
                 android:textSize="20sp"
@@ -70,7 +71,8 @@
 
             <TextView
                 android:id="@+id/country_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"

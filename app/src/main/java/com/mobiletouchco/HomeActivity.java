@@ -64,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
                 country_name.setText(country_nameT);
                 operator_name.setText(operator_nameT);
                 if(!operator_logo.equalsIgnoreCase(""))
-                    mAQ.id(operator_image).image(operator_logo, true, true, 200, 0);
+                    mAQ.id(operator_image).image(operator_logo, true, true);
 
             }
         } catch (Exception ex) {
