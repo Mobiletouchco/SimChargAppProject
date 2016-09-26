@@ -90,12 +90,12 @@ public class ChargePhoneActivity extends AppCompatActivity {
                 JSONObject resulstObject = onJsonObject.getJSONObject("results");
                 String customer_service = resulstObject.getString("charge_code");
                 Log.w("customer_service", "er" + customer_service);
-
+                //er*100*VC#
                 if (customer_service.contains("ID")) {
-                    if (edit_nation_id.getText().toString().trim().equalsIgnoreCase("")) {
+                    if (voucherId.trim().equalsIgnoreCase("")) {
                         Toast.makeText(mContext, "Please Enter voucher ", Toast.LENGTH_LONG).show();
                         return;
-                    } else if (edit_nation_id.getText().toString().trim().equalsIgnoreCase("")) {
+                    } else if (nationId.toString().trim().equalsIgnoreCase("")) {
                         Toast.makeText(mContext, "Please Enter ID ", Toast.LENGTH_LONG).show();
                         return;
                     } else {
@@ -111,12 +111,11 @@ public class ChargePhoneActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 } else {
-                    if (edit_nation_id.getText().toString().trim().equalsIgnoreCase("")) {
+                    if (voucherId.toString().trim().equalsIgnoreCase("")) {
                         Toast.makeText(mContext, "Please Enter voucher ", Toast.LENGTH_LONG).show();
                         return;
                     } else {
 
-//                        customer_service = customer_service.replace("ID", nationId);
                         customer_service = customer_service.replace("VT", voucherId);
                         String numberToDial = "tel:" + customer_service;
                         numberToDial = numberToDial.replaceAll("\\#", "%23");

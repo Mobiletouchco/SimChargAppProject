@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.NetworkInfo;
+import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initUi() {
+        Log.w("sadsd","ae"+isSimSupport(mContext));
+        Log.w("sadsd","ae"+isAirplaneModeOn(mContext));
+
         text_networkd = (TextView) this.findViewById(R.id.text_networkd);
         LinearLayout li_go = (LinearLayout) this.findViewById(R.id.li_go);
         li_go.setOnClickListener(new View.OnClickListener() {
@@ -80,8 +84,39 @@ public class MainActivity extends AppCompatActivity {
 
                 if (allOperators.size() > 1) {
                     if (operator_spinner.getSelectedItemPosition() > 0) {
+                        CountryList mCountryList = AllCountryList.getAllCountryList().elementAt(spinner_country.getSelectedItemPosition());
+                        Log.w("mCountryList", "are" + mCountryList.getCountry_name());
+
                         Operator mOperator = allOperators.get(operator_spinner.getSelectedItemPosition());
                         if (!NetInfo.isOnline(mContext)) {
+                            // off line data check
+                            try {
+                                JSONObject mJsonObject = new JSONObject();
+                                JSONObject mresults = new JSONObject();
+                                mresults.put("operator_id", mOperator.getOperator_id());
+                                mresults.put("operator_name", mOperator.getOperator_name());
+                                mresults.put("country_name", mCountryList.getCountry_name());
+                                mresults.put("mobile_country_code", mCountryList.getMobile_country_code());
+                                mresults.put("mobile_network_code", mOperator.getMobile_network_code());
+                                mresults.put("charge_code", mOperator.getCharge_code());
+                                mresults.put("check_balance", mOperator.getCheck_balance());
+                                mresults.put("customer_service", mOperator.getCustomer_service());
+                                mresults.put("operator_logo", mOperator.getOperator_logo());
+
+                                mJsonObject.put("success", 1);
+                                mJsonObject.put("msg", "data found.");
+                                mJsonObject.put("results", mresults);
+
+                                PersistentUser.setOpertordetails(mContext, mJsonObject.toString());
+                                Intent mIntent = new Intent(mContext, HomeActivity.class);
+                                startActivity(mIntent);
+                                ((Activity) mContext).overridePendingTransition(R.anim.pull_in_right,
+                                        R.anim.push_out_left);
+                            } catch (Exception ex) {
+                                Log.w("Exception", "aere" + ex.getMessage());
+                                Toast.makeText(getApplicationContext(), "Sorry don't able receive information", Toast.LENGTH_SHORT).show();
+
+                            }
 
 
                         } else {
@@ -138,14 +173,63 @@ public class MainActivity extends AppCompatActivity {
                     requestPermissions(new String[]{android.Manifest.permission.READ_PHONE_STATE},
                             REQUEST_CODE_ASK_PERMISSIONS);
                 } else {
-                    TelephonyManager manager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-                    String networkOperator = manager.getNetworkOperator();
-                    int mcc = 0, mnc = 0;
-                    if (networkOperator != null) {
-                        mcc = Integer.parseInt(networkOperator.substring(0, 3));
-                        mnc = Integer.parseInt(networkOperator.substring(3));
+                    if (isSimSupport(mContext)&&!isAirplaneModeOn(mContext)) {
+                        TelephonyManager manager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
+                        String networkOperator = manager.getNetworkOperator();
+                        int mcc = 0, mnc = 0;
+                        if (networkOperator != null) {
+                            mcc = Integer.parseInt(networkOperator.substring(0, 3));
+                            mnc = Integer.parseInt(networkOperator.substring(3));
+                        }
+                        if (!NetInfo.isOnline(mContext)) {
+
+                            for (int index = 1; index < AllCountryList.getAllCountryList().size(); index++) {
+                                CountryList mCountryList = AllCountryList.getAllCountryList().elementAt(index);
+
+                                if (mcc == Integer.parseInt(mCountryList.getMobile_country_code())) {
+                                    ArrayList<Operator> allOperatorOffline = mCountryList.getAllOperator();
+                                    for (int option = 0; option < allOperatorOffline.size(); option++) {
+                                        Operator mOperator = allOperatorOffline.get(option);
+                                        if (mnc == Integer.parseInt(mOperator.getMobile_network_code())) {
+                                            try {
+                                                JSONObject mJsonObject = new JSONObject();
+                                                JSONObject mresults = new JSONObject();
+                                                mresults.put("operator_id", mOperator.getOperator_id());
+                                                mresults.put("operator_name", mOperator.getOperator_name());
+                                                mresults.put("country_name", mCountryList.getCountry_name());
+                                                mresults.put("mobile_country_code", mCountryList.getMobile_country_code());
+                                                mresults.put("mobile_network_code", mOperator.getMobile_network_code());
+                                                mresults.put("charge_code", mOperator.getCharge_code());
+                                                mresults.put("check_balance", mOperator.getCheck_balance());
+                                                mresults.put("customer_service", mOperator.getCustomer_service());
+                                                mresults.put("operator_logo", mOperator.getOperator_logo());
+
+                                                mJsonObject.put("success", 1);
+                                                mJsonObject.put("msg", "data found.");
+                                                mJsonObject.put("results", mresults);
+
+                                                PersistentUser.setOpertordetails(mContext, mJsonObject.toString());
+                                                Intent mIntent = new Intent(mContext, HomeActivity.class);
+                                                startActivity(mIntent);
+                                                ((Activity) mContext).overridePendingTransition(R.anim.pull_in_right,
+                                                        R.anim.push_out_left);
+                                            } catch (Exception ex) {
+                                            }
+                                            break;
+                                        }
+                                    }
+
+                                }
+                            }
+                        } else {
+                            doWebRequestForOpertordetailsbyName("" + mnc, "" + mcc);
+
+                        }
+                    } else {
+                        Toast.makeText(MainActivity.this, "There is no network detected.", Toast.LENGTH_SHORT).show();
+
                     }
-                    doWebRequestForOpertordetailsbyName("" + mnc, "" + mcc);
+
 
                 }
             }
@@ -200,6 +284,15 @@ public class MainActivity extends AppCompatActivity {
         } else {
             doWebRequestForCountryInfo();
         }
+
+    }
+    private static boolean isAirplaneModeOn(Context context) {
+        return Settings.System.getInt(context.getContentResolver(),
+                Settings.System.AIRPLANE_MODE_ON, 0) != 0;
+    }
+    public static boolean isSimSupport(Context context) {
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);  //gets the current TelephonyManager
+        return !(tm.getSimState() == TelephonyManager.SIM_STATE_ABSENT);
 
     }
 

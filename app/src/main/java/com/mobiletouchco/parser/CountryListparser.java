@@ -1,6 +1,7 @@
 package com.mobiletouchco.parser;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.mobiletouchco.holder.AllCountryList;
 import com.mobiletouchco.model.CountryList;
@@ -12,6 +13,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Prosanto on 9/2/16.
@@ -25,8 +28,9 @@ public class CountryListparser {
         Operator mOperator = null;
         if (result.length() < 1 || result == null) {
             return false;
-
         }
+        Map<String,CountryList> mapValuesCountryList = new HashMap<String, CountryList>();
+
         final JSONObject json_ob = new JSONObject(result);
         int success = json_ob.getInt("success");
 
@@ -38,13 +42,15 @@ public class CountryListparser {
                 mCountryList = new CountryList();
                 mCountryList.setCountry_code(object.getString("country_code"));
                 mCountryList.setCountry_id(object.getString("country_id"));
-                mCountryList.setCountry_name(object.getString("country_name"));
-                mCountryList.setNetwork_code(object.getString("network_code"));
 
+                String countryName=object.getString("country_name");
+                mCountryList.setCountry_name(countryName);
+                mCountryList.setNetwork_code(object.getString("network_code"));
+                mCountryList.setMobile_country_code(object.getString("mobile_country_code"));
                 JSONArray mJsonArray = object.getJSONArray("opertors");
 
                 ArrayList<Operator> allOperators = new ArrayList<>();
-
+                Map<String,Operator> mapValues = new HashMap<String,Operator>();
                 for (int index = 0; index < mJsonArray.length(); index++) {
                     JSONObject objectOperator = mJsonArray.getJSONObject(index);
                     mOperator = new Operator();
@@ -54,12 +60,30 @@ public class CountryListparser {
                     mOperator.setOperator_id(objectOperator.getString("operator_id"));
                     mOperator.setOperator_logo(objectOperator.getString("operator_logo"));
                     mOperator.setOperator_name(objectOperator.getString("operator_name"));
-                    allOperators.add(mOperator);
+                    mOperator.setMobile_network_code(objectOperator.getString("mobile_network_code"));
+                    String name =objectOperator.getString("operator_name");
+                    mapValues.put(name, mOperator);
+
+
 
                 }
 
+                for (Map.Entry<String, Operator> entry : mapValues.entrySet()) {
+                    String key = entry.getKey();
+                    Operator value = entry.getValue();
+                    allOperators.add(value);
+                }
+
+
                 mCountryList.setAllOperator(allOperators);
-                AllCountryList.setCountryList(mCountryList);
+                if (mapValuesCountryList.containsKey(countryName)) {
+                    //key exists
+                } else {
+                    //key does not exists
+                    mapValuesCountryList.put(countryName,mCountryList);
+                    AllCountryList.setCountryList(mCountryList);
+                }
+
 
             }
         }

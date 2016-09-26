@@ -9,7 +9,18 @@ public class CountryList {
     private String country_id="";
     private String country_name="";
     private String country_code="";
+    private String mobile_country_code="";
     private String network_code="";
+
+
+    public String getMobile_country_code() {
+        return mobile_country_code;
+    }
+
+    public void setMobile_country_code(String mobile_country_code) {
+        this.mobile_country_code = mobile_country_code;
+    }
+
     public ArrayList<Operator>allOperator = new ArrayList<>();
 
     public String getCountry_id() {

@@ -12,6 +12,15 @@ public class Operator {
     private String check_balance="";
     private String customer_service="";
     private String operator_logo="";
+    private String mobile_network_code="";
+
+    public String getMobile_network_code() {
+        return mobile_network_code;
+    }
+
+    public void setMobile_network_code(String mobile_network_code) {
+        this.mobile_network_code = mobile_network_code;
+    }
 
     public String getOperator_id() {
         return operator_id;

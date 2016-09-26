@@ -89,7 +89,6 @@ public class HomeActivity extends AppCompatActivity {
         lay_chackbalance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 try {
 
                     JSONObject onJsonObject = new JSONObject(PersistentUser.getOpertordetails(mContext));

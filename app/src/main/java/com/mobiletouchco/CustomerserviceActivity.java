@@ -3,6 +3,7 @@ package com.mobiletouchco;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,7 +47,9 @@ public class CustomerserviceActivity extends AppCompatActivity {
             if (success == 1) {
                 JSONObject resulstObject = onJsonObject.getJSONObject("results");
                 String customer_service = resulstObject.getString("customer_service");
-                details_operator.setText(customer_service);
+                details_operator.setText(Html.fromHtml(customer_service));
+
+//                details_operator.setText(customer_serviceomer_service);
                 String operator_logo = resulstObject.getString("operator_logo");
                 String country_nameT = resulstObject.getString("country_name");
                 String operator_nameT = resulstObject.getString("operator_name");
