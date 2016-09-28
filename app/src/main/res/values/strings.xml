@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mobiletouchco</string>
+    <string name="app_name">SIM Info &amp; Charging Codes</string>
     <string name="simcode">SIM CHARGING CODES</string>
     <string name="selete_country">Select Country</string>
     <string name="selete_Network">Select Network</string>
