@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,9 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.mobiletouchco.adpater.CountryAdapter;
 import com.mobiletouchco.adpater.OperatorAdapter;
 import com.mobiletouchco.holder.AllCountryList;
@@ -41,6 +45,7 @@ import com.mobiletouchco.utils.Config;
 import com.mobiletouchco.utils.Connectivity;
 import com.mobiletouchco.utils.NetInfo;
 import com.mobiletouchco.utils.PersistentUser;
+import com.mobiletouchco.utils.ToastAdListener;
 
 import org.json.JSONObject;
 
@@ -62,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout li_auto;
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
     private LinearLayout li_contactus;
+    private LinearLayout addviewLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -285,6 +291,23 @@ public class MainActivity extends AppCompatActivity {
             doWebRequestForCountryInfo();
         }
 
+        addviewLayout =(LinearLayout)this.findViewById(R.id.addview);
+        loadAdmob();
+    }
+    private AdView adView;
+    private void loadAdmob() {
+
+        String id_add = mContext.getString(R.string.Banner_unit_id);
+        adView = new AdView(this);
+        adView.setAdUnitId(id_add);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdListener(new ToastAdListener(
+                this));
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        addviewLayout.addView(adView, params);
+        adView.loadAd(new AdRequest.Builder().build());
     }
     private static boolean isAirplaneModeOn(Context context) {
         return Settings.System.getInt(context.getContentResolver(),

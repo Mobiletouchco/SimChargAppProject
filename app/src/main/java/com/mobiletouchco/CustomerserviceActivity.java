@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,6 +50,8 @@ public class CustomerserviceActivity extends AppCompatActivity {
                 JSONObject resulstObject = onJsonObject.getJSONObject("results");
                 String customer_service = resulstObject.getString("customer_service");
                 details_operator.setText(Html.fromHtml(customer_service));
+                details_operator.setMovementMethod(LinkMovementMethod.getInstance());
+                Linkify.addLinks(details_operator, Linkify.WEB_URLS | Linkify.PHONE_NUMBERS);
 
 //                details_operator.setText(customer_serviceomer_service);
                 String operator_logo = resulstObject.getString("operator_logo");

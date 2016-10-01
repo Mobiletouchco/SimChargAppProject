@@ -11,5 +11,7 @@
     <string name="option">*Optional for some operators</string>
     <string name="internetconnection_erro">You are not connected to internet</string>
 
+    <string name="Banner_unit_id">ca-app-pub-6164690552161200/1239178572</string>
+
 
 </resources>

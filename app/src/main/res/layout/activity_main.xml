@@ -161,10 +161,10 @@
         android:id="@+id/li_contactus"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/addview"
         android:layout_alignParentRight="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="6dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
@@ -186,4 +186,10 @@
         </View>
 
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/addview"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"></LinearLayout>
 </RelativeLayout>
